@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["@fuel-wallet/sdk"],
     "target": "es2017",
     "lib": [
       "dom",

@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { FuelProvider } from '@fuel-wallet/react';
+import { FuelProvider } from '@fuels/react';
+import {
+  defaultConnectors,
+} from '@fuels/connectors';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+ 
+const queryClient = new QueryClient();
 
 
 const root = ReactDOM.createRoot(
@@ -11,13 +17,18 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <FuelProvider 
-      fuelConfig={{
-          devMode: true,
+    <QueryClientProvider client={queryClient}>
+      <FuelProvider
+        fuelConfig={{
+          connectors: defaultConnectors(),
         }}
-    >
-    <App />
-    </FuelProvider> 
+      >
+        <App />
+      </FuelProvider>
+    </QueryClientProvider>
+
+Icon ClipboardText
+
   </React.StrictMode>
 );
 
